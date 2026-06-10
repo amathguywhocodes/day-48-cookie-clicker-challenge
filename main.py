@@ -31,9 +31,9 @@ except NoSuchElementException:
 big_cookie_button = driver.find_element(By.ID, value="bigCookie")
 # print(big_cookie_button)
 
+
 # Set timers
 # print(time())
-
 # Set time for upgrade interval
 upgrade_interval = 5
 upgrade_time = time() + upgrade_interval
@@ -44,22 +44,31 @@ stop_time = time() + 300
 # print(stop_time)
 
 # Click to the big cookie constantly for 5 minutes   by using a while loop
-#CONTINUE FROM HERE
-#CONTINUE FROM HERE
-#CONTINUE FROM HERE
-#CONTINUE FROM HERE
-#CONTINUE FROM HERE
-#CONTINUE FROM HERE
-# while True:
-#     big_cookie_button.click()
-#     # Every 5 seconds (time.time()>=upgrade_time), try to buy the most expensive item we can afford
-#     if time() > upgrade_time:
-#         pass
-#     # If enabled products exists, click on all enabled product starting from the last item (most expensive).
-#       # Technically, more expensive item can appear earlier in the list but
-#       # that's unlikely based on the bot executes its logic.
-#       # Reset upgrade interval
-#     # Stop program execution
+#CONTINUE FROM HERE: just run this version of code to see if the while loop
+# breaks after 5 minutes and the upgrade interval works as intended
+#CONTINUE FROM HERE: just run this version of code to see if the while loop
+# breaks after 5 minutes and the upgrade interval works as intended
+#CONTINUE FROM HERE: just run this version of code to see if the while loop
+# breaks after 5 minutes and the upgrade interval works as intended
+
+while True:
+    big_cookie_button.click()
+    # Every 5 seconds (time.time()>=upgrade_time), try to buy the most expensive item we can afford
+    if time() >= upgrade_time:
+        # Get all enabled products
+        products = 5 #  use driver.find_elements here
+        print(products)
+        # If enabled products exists, click on all enabled product starting from the last item (most expensive).
+        # Technically, more expensive item can appear earlier in the list but
+        # that's unlikely based on the bot executes its logic.
+
+        # Reset upgrade interval
+        upgrade_time = time() + upgrade_interval
+        print(upgrade_time)
+
+    # Stop program execution
+    if time() >= stop_time:
+        break
 
 # Print out cookies per second
 cookies_per_second = driver.find_element(By.ID, value="cookiesPerSecond")
