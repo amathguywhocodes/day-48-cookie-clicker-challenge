@@ -44,23 +44,27 @@ stop_time = time() + 300
 # print(stop_time)
 
 # Click to the big cookie constantly for 5 minutes   by using a while loop
-#CONTINUE FROM HERE: just run this version of code to see if the while loop
-# breaks after 5 minutes and the upgrade interval works as intended
-#CONTINUE FROM HERE: just run this version of code to see if the while loop
-# breaks after 5 minutes and the upgrade interval works as intended
-#CONTINUE FROM HERE: just run this version of code to see if the while loop
-# breaks after 5 minutes and the upgrade interval works as intended
+#CONTINUE FROM HERE:
 
 while True:
     big_cookie_button.click()
     # Every 5 seconds (time.time()>=upgrade_time), try to buy the most expensive item we can afford
     if time() >= upgrade_time:
-        # Get all enabled products
-        products = 5 #  use driver.find_elements here
+#         # Get all enabled products
+#         #  use driver.find_elements here
+#         # < div class ="product unlocked enabled" onmouseout="Game.tooltip.shouldHide=1;" onmouseover="Game.tooltip.dynamic=1;Game.tooltip.draw(this,function(){return Game.ObjectsById[5].tooltip();},'store');Game.tooltip.wobble();" id="product5" > < div class ="icon off" id="productIconOff5" style="background-position: -64px -384px;" > < / div > < div class ="icon" id="productIcon5" style="background-position: 0px -384px;" > < / div > < div class ="content" > < div class ="lockedTitle" > ??? < / div > < div class ="title productName" id="productName5" > Bank < / div > < span class ="priceMult" id="productPriceMult5" > < / span > < span class ="price" id="productPrice5" > 1.61 million < / span > < div class ="title owned" id="productOwned5" > 1 < / div > < / div > < / div >
+#         # class ="product unlocked enabled"
+        products = driver.find_elements(By.CSS_SELECTOR, "#products .product.enabled")
         print(products)
-        # If enabled products exists, click on all enabled product starting from the last item (most expensive).
-        # Technically, more expensive item can appear earlier in the list but
-        # that's unlikely based on the bot executes its logic.
+
+
+
+#         # If enabled products exists, click on all enabled product starting from the last item (most expensive).
+#         # Technically, more expensive item can appear earlier in the list but
+#         # that's unlikely based on the bot executes its logic.
+        if products:
+            b = products[len(products) - 1]
+            b.click()
 
         # Reset upgrade interval
         upgrade_time = time() + upgrade_interval
